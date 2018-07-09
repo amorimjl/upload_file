@@ -1,10 +1,10 @@
 <?php
 namespace App\Controller;
-
 use App\Controller\AppController;
 use Cake\Routing\Router;
 
 class PostsController extends AppController {
+   
     public function initialize(){
         parent::initialize();
         $this->loadModel('Posts');
@@ -25,7 +25,7 @@ class PostsController extends AppController {
                     $post->created = date("Y-m-d H:i:s");
                     $post->modified = date("Y-m-d H:i:s");
                     if($this->Posts->save($post)){
-                        $this->Flash->sucess(__('File uploaded successfully'));
+                        $this->Flash->success('This was successful');
                     }else{
                         $this->Flash->error(__('Fail to Upload'));
                     }
@@ -34,5 +34,7 @@ class PostsController extends AppController {
                 $this->Flash->error(_('Fail to Upload'));
             }
         }
+        $this->set('post', $post);
     }
 }
+?>
