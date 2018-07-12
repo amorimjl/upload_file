@@ -10,7 +10,7 @@ class PostsController extends AppController {
         $this->loadModel('Posts');
     }
 
-    public function index(){
+    public function add(){
         $post = ' ';
         if($this->request->is('post')){
             if(!empty($this->request->data['file']['name'])){
@@ -35,6 +35,12 @@ class PostsController extends AppController {
             }
         }
         $this->set('post', $post);
+    }
+
+    public function view(){
+        $posts = $this->paginate($this->Posts);
+
+        $this->set(compact('posts'));   
     }
 }
 ?>

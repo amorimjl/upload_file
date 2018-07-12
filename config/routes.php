@@ -52,7 +52,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Posts', 'action' => 'index', 'home']);
+    $routes->connect('/', ['controller' => 'Posts', 'action' => 'View', 'home']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -62,6 +62,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     /**
      * ...and connect the rest of 'Posts' controller's URLs.
      */
+
+    $routes->connect('/posts/*', ['controller' => 'Posts', 'action' => 'view']);
+
+    $routes->connect('/posts/*', ['controller' => 'Posts', 'action' => 'add']);
 
     /**
      * Connect catchall routes for all controllers.
